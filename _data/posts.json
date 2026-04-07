@@ -1,1 +1,39 @@
-
+{
+  "posts": [
+    {
+      "slug": "phishing-ia-generativa-2025",
+      "titulo": "As novas táticas de phishing que estão enganando até profissionais de TI",
+      "resumo": "Ataques de spear phishing evoluíram com IA generativa. Veja como identificar e bloquear essas ameaças antes que causem dano.",
+      "categoria": "Phishing",
+      "data": "Mar 2025",
+      "data_iso": "2025-03-15",
+      "autor": "Equipe Mavima",
+      "conteudo": "Com o avanço da IA generativa, ataques de phishing ficaram muito mais sofisticados. Criminosos agora criam e-mails personalizados com nome, cargo e contexto real da vítima, extraídos de LinkedIn e outras redes. Neste artigo, mostramos os 5 sinais de alerta que todo profissional precisa conhecer e como configurar filtros avançados no seu servidor de e-mail para barrar essas tentativas."
+    },
+    {
+      "slug": "zero-trust-implementacao-pratica",
+      "titulo": "Zero Trust: por que nunca confie, sempre verifique é a base da segurança moderna",
+      "resumo": "Como implementar o modelo Zero Trust sem paralisar a operação — guia prático para gestores de TI.",
+      "categoria": "Arquitetura",
+      "data": "Fev 2025",
+      "data_iso": "2025-02-20",
+      "autor": "Equipe Mavima",
+      "conteudo": "Zero Trust não é um produto, é uma filosofia. Neste guia, detalhamos como migrar de um modelo de segurança baseado em perímetro para uma arquitetura de confiança zero em 4 fases práticas, sem interromper a operação do negócio. Cobrimos identidade, dispositivos, rede e dados."
+    },
+    {
+      "slug": "iso-27001-2022-guia-completo",
+      "titulo": "Guia completo: o que muda na ISO 27001:2022 e o que sua empresa precisa fazer",
+      "resumo": "As principais atualizações da nova versão da norma e o impacto para empresas em processo de certificação.",
+      "categoria": "ISO 27001",
+      "data": "Jan 2025",
+      "data_iso": "2025-01-10",
+      "autor": "Equipe Mavima",
+      "conteudo": "A ISO 27001:2022 trouxe 11 novos controles e reorganizou a estrutura do Anexo A. Empresas que estavam em processo de certificação pela versão 2013 têm até outubro de 2025 para migrar. Explicamos o que mudou, quais controles são prioritários e como estruturar o plano de transição."
+    }
+  ],
+  "meta": {
+    "total": 3,
+    "ultima_atualizacao": "2025-03-15T10:00:00Z",
+    "gerado_por": "n8n + Claude API"
+  }
+}
