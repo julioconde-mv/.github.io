@@ -7,7 +7,7 @@
 <meta name="description" content="Artigos, alertas e boas práticas em cibersegurança para empresas. Conteúdo especializado pela equipe Mavima.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:       #09090b;
@@ -26,8 +26,9 @@
     --text:  #f0eee8;
     --text2: #9c9a8e;
     --text3: #5e5c55;
-    --font-display: 'Syne', sans-serif;
-    --font-body:    'DM Sans', sans-serif;
+    /* Variáveis de fonte atualizadas */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
     --radius:    10px;
     --radius-lg: 16px;
     --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
@@ -282,7 +283,7 @@
       alt="Mavima"
       onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
     >
-    <span class="nav-logo-fallback" style="display:none">mavima</span>
+    <span class="nav-logo-fallback" style="display:none">MAVIMA</span>
   </a>
   <a href="/" class="nav-back">
     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -304,13 +305,11 @@
   <button class="filter-btn active" data-cat="all" onclick="filtrar(this, 'all')">Todos</button>
 </div>
 
-<!-- Loading -->
 <div class="loading-state" id="loading">
   <div class="loading-spinner"></div>
   <p>Carregando artigos...</p>
 </div>
 
-<!-- Empty state -->
 <div class="empty-state" id="empty">
   <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
   <h3>Nenhum artigo ainda</h3>
