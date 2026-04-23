@@ -157,4 +157,501 @@
   .service-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,.45); }
   .service-card.sc-orange:hover { border-color: rgba(255,145,0,.28); }
   .service-card.sc-orange:hover::after { opacity: 1; }
-  .service
+  .service-card.sc-purple:hover { border-color: rgba(155,48,204,.28); }
+  .service-card.sc-purple:hover::after { opacity: 1; }
+  .service-card.sc-cyan:hover { border-color: rgba(0,201,212,.28); }
+  .service-card.sc-cyan:hover::after { opacity: 1; }
+  .service-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; position: relative; z-index: 1; }
+  .si-orange { background: var(--orange-dim); border: 1px solid rgba(255,145,0,.22); }
+  .si-orange svg { stroke: var(--orange); }
+  .si-purple { background: var(--purple-dim); border: 1px solid rgba(115,0,156,.22); }
+  .si-purple svg { stroke: var(--purple-light); }
+  .si-cyan { background: var(--cyan-dim); border: 1px solid rgba(0,201,212,.2); }
+  .si-cyan svg { stroke: var(--cyan); }
+  .service-icon svg { width: 19px; height: 19px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .service-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 9px; position: relative; z-index: 1; }
+  .service-card p { font-size: 13.5px; color: var(--text2); line-height: 1.7; position: relative; z-index: 1; }
+  .service-tag { display: inline-block; margin-top: 13px; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; position: relative; z-index: 1; }
+  .st-orange { color: var(--orange); background: var(--orange-dim); }
+  .st-purple { color: var(--purple-light); background: var(--purple-dim); }
+  .st-cyan { color: var(--cyan); background: var(--cyan-dim); }
+
+  /* Seção recorrente T1 */
+  .mss-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; margin-top: 36px; position: relative; overflow: hidden; }
+  .mss-box::before { content: ''; position: absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+  .mss-box-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .mss-box-icon { width: 40px; height: 40px; background: var(--orange-dim); border: 1px solid rgba(255,145,0,.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .mss-box-icon svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  .mss-box-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); }
+  .mss-box-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .mss-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 10px; }
+  .mss-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--text2); }
+  .mss-item::before { content: ''; width: 5px; height: 5px; background: var(--orange); border-radius: 50%; flex-shrink: 0; opacity: .7; }
+
+  /* TORRE 2 — IA */
+  #torre2 { background: var(--bg2); }
+  .ia-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .ia-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; position: relative; overflow: hidden; transition: all var(--transition); }
+  .ia-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--purple-dim) 0%, transparent 60%); opacity: 0; transition: opacity var(--transition); }
+  .ia-card:hover { border-color: rgba(155,48,204,.3); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,.45); }
+  .ia-card:hover::before { opacity: 1; }
+  .ia-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1; }
+  .ia-num { width: 28px; height: 28px; background: var(--purple-dim); border: 1px solid rgba(115,0,156,.3); border-radius: 8px; font-family: var(--font-display); font-size: 13px; font-weight: 800; color: var(--purple-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ia-card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); position: relative; z-index: 1; margin-bottom: 10px; line-height: 1.3; }
+  .ia-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; position: relative; z-index: 1; }
+  .ia-card ul li { font-size: 13px; color: var(--text2); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .ia-card ul li::before { content: ''; width: 5px; height: 5px; background: var(--purple-light); border-radius: 50%; flex-shrink: 0; margin-top: 7px; opacity: .7; }
+  .ia-highlight { background: linear-gradient(135deg, var(--surface) 0%, rgba(115,0,156,.08) 100%); border: 1px solid rgba(115,0,156,.2); border-radius: var(--radius-lg); padding: 28px; margin-top: 20px; display: flex; align-items: center; gap: 20px; }
+  .ia-highlight-icon { width: 52px; height: 52px; background: var(--purple-dim); border: 1px solid rgba(115,0,156,.3); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ia-highlight-icon svg { width: 24px; height: 24px; stroke: var(--purple-light); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  .ia-highlight-text strong { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--text); display: block; margin-bottom: 4px; }
+  .ia-highlight-text p { font-size: 13.5px; color: var(--text2); line-height: 1.6; }
+
+  /* TORRE 3 — CLOUD */
+  #torre3 { background: var(--bg); }
+  .cloud-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .cloud-services { display: flex; flex-direction: column; gap: 12px; }
+  .cloud-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: all var(--transition); }
+  .cloud-item:hover { border-color: rgba(0,201,212,.22); background: var(--surface2); }
+  .cloud-item-dot { width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 6px var(--cyan-glow); flex-shrink: 0; margin-top: 6px; }
+  .cloud-item-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .cloud-item-text span { font-size: 12.5px; color: var(--text3); line-height: 1.5; }
+  .cloud-providers { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; position: relative; overflow: hidden; }
+  .cloud-providers::before { content: ''; position: absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+  .cloud-providers-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; }
+  .cloud-badges { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .cloud-badge { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 10px; text-align: center; transition: all var(--transition); }
+  .cloud-badge:hover { border-color: rgba(0,201,212,.22); }
+  .cloud-badge-name { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--cyan); margin-bottom: 4px; }
+  .cloud-badge-sub { font-size: 11px; color: var(--text3); }
+  .cloud-features { display: flex; flex-direction: column; gap: 9px; }
+  .cloud-feature { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text2); }
+  .cloud-feature::before { content: ''; width: 5px; height: 5px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; opacity: .7; }
+
+  /* MÉTRICAS */
+  #metricas { background: var(--bg); }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px 20px; text-align: center; position: relative; overflow: hidden; transition: all var(--transition); }
+  .metric-card::before { content: ''; position: absolute; top:0; left:50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+  .metric-card:hover { border-color: rgba(255,145,0,.2); transform: translateY(-2px); }
+  .metric-num { font-family: var(--font-display); font-size: 42px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: var(--orange); }
+  .metric-label { font-size: 13px; color: var(--text3); line-height: 1.5; }
+
+  /* CONTATO */
+  #contato { background: var(--bg2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-channels { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .contact-channel { display: flex; align-items: center; gap: 13px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: all var(--transition); }
+  .contact-channel:hover { border-color: rgba(255,145,0,.22); background: var(--surface2); }
+  .channel-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .channel-icon svg { width: 17px; height: 17px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .channel-icon.whatsapp { background: rgba(34,197,139,.12); border: 1px solid rgba(34,197,139,.22); }
+  .channel-icon.whatsapp svg { stroke: var(--success); }
+  .channel-icon.email { background: var(--orange-dim); border: 1px solid rgba(255,145,0,.2); }
+  .channel-icon.email svg { stroke: var(--orange); }
+  .channel-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); }
+  .channel-text span { font-size: 12px; color: var(--text3); }
+  .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px; position: relative; overflow: hidden; }
+  .contact-form::before { content: ''; position: absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, transparent, var(--orange), var(--purple), transparent); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 10px 13px; font-family: var(--font-body); font-size: 14px; color: var(--text); outline: none; transition: border-color var(--transition); -webkit-appearance: none; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(255,145,0,.4); box-shadow: 0 0 0 3px rgba(255,145,0,.07); }
+  .form-group select option { background: var(--bg2); }
+  .form-group textarea { resize: vertical; min-height: 96px; }
+  .form-submit { width: 100%; background: var(--orange); color: #000; font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 13px; border: none; border-radius: var(--radius); cursor: pointer; transition: all var(--transition); }
+  .form-submit:hover { background: #ffaa33; transform: translateY(-1px); box-shadow: 0 8px 24px var(--orange-glow); }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 40px 28px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+  .footer-brand p { font-size: 13.5px; color: var(--text3); line-height: 1.7; margin-top: 14px; max-width: 230px; }
+  .footer-dots { display: flex; gap: 5px; margin-top: 14px; }
+  .footer-dots span { width: 7px; height: 7px; background: var(--purple); border-radius: 50%; box-shadow: 0 0 6px var(--purple-glow); opacity: .7; }
+  .footer-dots span:nth-child(2) { background: var(--orange); box-shadow: 0 0 6px var(--orange-glow); }
+  .footer-dots span:nth-child(3) { background: var(--cyan); box-shadow: 0 0 6px var(--cyan-glow); }
+  .footer-col h4 { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul a { font-size: 14px; color: var(--text3); text-decoration: none; transition: color var(--transition); }
+  .footer-col ul a:hover { color: var(--text2); }
+  .footer-bottom { padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 13px; color: var(--text3); }
+  .footer-bottom a { color: var(--orange); text-decoration: none; font-size: 13px; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 200; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.4); transition: all var(--transition); animation: float-in 0.6s cubic-bezier(.34,1.56,.64,1) 1s both; }
+  @keyframes float-in { from{opacity:0;transform:scale(.5) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.5); }
+  .wa-float svg { width: 27px; height: 27px; fill: white; }
+
+  @media(max-width:900px){
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    #hero { padding: 96px 20px 56px; }
+    .hero-inner, .contact-grid, .cloud-layout { grid-template-columns: 1fr; gap: 36px; }
+    .towers-overview { grid-template-columns: 1fr; }
+    .ia-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+  
+  @media(max-width:500px){
+    .metrics-grid { grid-template-columns: 1fr; }
+    .hero-panel, .mss-box, .contact-form { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-fallback">MAVIMA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Início</a></li>
+    <li><a href="#torres">Soluções</a></li>
+    <li><a href="#metricas">Métricas</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="btn-primary nav-cta">Falar com Especialista</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Inovação em Cibersegurança</div>
+      <h1>Transformando <em>Segurança Digital</em> em Inteligência Estratégica.</h1>
+      <p class="hero-sub">A Mavima é especializada em segurança da informação, mantendo o foco do seu core business através da entrega de proteção robusta e automação em escala.</p>
+      
+      <div class="hero-pillars">
+        <div class="hero-pillar"><div class="hero-pillar-dot orange"></div> Segurança e IA</div>
+        <div class="hero-pillar"><div class="hero-pillar-dot purple"></div> Automação</div>
+        <div class="hero-pillar"><div class="hero-pillar-dot cyan"></div> Infra Cloud</div>
+      </div>
+      
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Diagnóstico Gratuito</a>
+        <a href="#torres" class="btn-ghost">Conheça as Soluções</a>
+      </div>
+    </div>
+    
+    <div class="hero-panel">
+      <div class="panel-title">Mavima em Números</div>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-value">95%</div>
+          <div class="stat-label">Redução de Incidentes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">+4MM</div>
+          <div class="stat-label">Alertas Analisados/Mês</div>
+        </div>
+      </div>
+      <div class="panel-alert">
+        <div class="alert-dot"></div>
+        <div class="alert-text">Nosso <strong>SIC as a Service</strong> garante detecção proativa e resposta imediata a incidentes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="torres">
+  <div class="section-inner">
+    <div class="section-label">Nossas Soluções</div>
+    <h2>Três Pilares de Atuação</h2>
+    <p class="section-desc">Mais segurança, mais eficiência e mais controle. Soluções completas para proteger, automatizar e escalar o seu ambiente tecnológico.</p>
+    
+    <div class="towers-overview">
+      <a href="#torre1" class="tower-card t1">
+        <div class="tower-num">Torre 01</div>
+        <div class="tower-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Segurança da Informação</h3>
+        <p>Serviço de Inteligência Cibernética (SIC), Assessment de Segurança e BlueTeam.</p>
+        <div class="tower-tags">
+          <span class="tower-tag">Monitoramento 24/7</span>
+        </div>
+      </a>
+      
+      <a href="#torre2" class="tower-card t2">
+        <div class="tower-num">Torre 02</div>
+        <div class="tower-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 16v-4m0-4h.01"/></svg>
+        </div>
+        <h3>IA Aplicada ao Negócio</h3>
+        <p>Projetos de automação com N8N, IA Governance e adoção de IA Corporativa.</p>
+        <div class="tower-tags">
+          <span class="tower-tag">Eficiência</span>
+        </div>
+      </a>
+      
+      <a href="#torre3" class="tower-card t3">
+        <div class="tower-num">Torre 03</div>
+        <div class="tower-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        </div>
+        <h3>Cloud & On-Premise</h3>
+        <p>Hardening de infraestrutura, gestão de AWS/Azure/GCP e arquitetura Zero Trust.</p>
+        <div class="tower-tags">
+          <span class="tower-tag">Networking</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="torre1">
+  <div class="section-inner">
+    <div class="section-label t1-accent">Torre 01</div>
+    <h2>Segurança Aplicada ao Negócio</h2>
+    <p class="section-desc">Democratizamos a cibersegurança de alto nível com monitoramento automatizado e resposta imediata.</p>
+    
+    <div class="services-grid">
+      <div class="service-card sc-orange">
+        <div class="service-icon si-orange"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Gestão de Vulnerabilidades & Assessment</h3>
+        <p>Identificação contínua e diagnóstico de segurança para prevenção de ataques.</p>
+        <span class="service-tag st-orange">Assessment</span>
+      </div>
+      <div class="service-card sc-orange">
+        <div class="service-icon si-orange"><svg viewBox="0 0 24 24"><path d="M12 2v20m10-10H2"/></svg></div>
+        <h3>Resposta a Incidentes</h3>
+        <p>Equipe CSIRT e BlueTeam pronta para atuar com inteligência e mitigar ameaças ativas.</p>
+        <span class="service-tag st-orange">BlueTeam</span>
+      </div>
+    </div>
+    
+    <div class="mss-box">
+      <div class="mss-box-header">
+        <div class="mss-box-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div>
+          <div class="mss-box-title">Funcionalidades do SIC as a Service</div>
+          <div class="mss-box-sub">Monitoramento 24x7 automatizado</div>
+        </div>
+      </div>
+      <div class="mss-items">
+        <div class="mss-item">Alertas em Tempo Real (Teams/Slack)</div>
+        <div class="mss-item">Registro Detalhado (JIRA)</div>
+        <div class="mss-item">Acionamento Crítico (PagerDuty)</div>
+        <div class="mss-item">Dashboard Interativo</div>
+        <div class="mss-item">Integração SOAR Rápida</div>
+        <div class="mss-item">Relatórios Estratégicos Mensais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="torre2">
+  <div class="section-inner">
+    <div class="section-label" style="color: var(--purple-light)">Torre 02</div>
+    <h2>IA Aplicada ao Negócio</h2>
+    <p class="section-desc">Integramos cibersegurança e Inteligência Artificial para evoluir sua empresa com segurança total.</p>
+    
+    <div class="ia-grid">
+      <div class="ia-card">
+        <div class="ia-card-top">
+          <div class="ia-num">01</div>
+          <h3>IA Governance</h3>
+        </div>
+        <ul>
+          <li>Mapeamento de processos automáticos</li>
+          <li>Política interna de uso de IA</li>
+          <li>Definição de riscos legais</li>
+        </ul>
+      </div>
+      <div class="ia-card">
+        <div class="ia-card-top">
+          <div class="ia-num">02</div>
+          <h3>Implantação Corporativa</h3>
+        </div>
+        <ul>
+          <li>ChatGPT Enterprise & Claude</li>
+          <li>Assistentes internos para RH/Jurídico</li>
+          <li>Integração de IA + API</li>
+        </ul>
+      </div>
+      <div class="ia-card">
+        <div class="ia-card-top">
+          <div class="ia-num">03</div>
+          <h3>Automação Inteligente</h3>
+        </div>
+        <ul>
+          <li>Automação de fluxos com n8n</li>
+          <li>Geração de relatórios executivos</li>
+          <li>IA para análise de logs (SOC)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="torre3">
+  <div class="section-inner">
+    <div class="section-label" style="color: var(--cyan)">Torre 03</div>
+    <h2>Infraestrutura que escala com segurança</h2>
+    
+    <div class="cloud-layout">
+      <div class="cloud-services">
+        <div class="cloud-item">
+          <div class="cloud-item-dot"></div>
+          <div class="cloud-item-text">
+            <strong>Gerenciamento Windows & Linux</strong>
+            <span>Hardening de servidores e ambientes on-premise/cloud.</span>
+          </div>
+        </div>
+        <div class="cloud-item">
+          <div class="cloud-item-dot"></div>
+          <div class="cloud-item-text">
+            <strong>Active Directory & IAM</strong>
+            <span>Gestão de identidades e políticas de autenticação segura.</span>
+          </div>
+        </div>
+        <div class="cloud-item">
+          <div class="cloud-item-dot"></div>
+          <div class="cloud-item-text">
+            <strong>Networking Zero Trust</strong>
+            <span>Firewalls NGFW, SD-WAN, Segmentação VLAN.</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cloud-providers">
+        <div class="cloud-providers-title">Cloud Governance</div>
+        <div class="cloud-badges">
+          <div class="cloud-badge"><div class="cloud-badge-name">AWS</div></div>
+          <div class="cloud-badge"><div class="cloud-badge-name">Azure</div></div>
+          <div class="cloud-badge"><div class="cloud-badge-name">GCP</div></div>
+        </div>
+        <div class="cloud-features">
+          <div class="cloud-feature">Projeto de Landing Zone segura</div>
+          <div class="cloud-feature">Revisão CSPM e CIS Benchmarks</div>
+          <div class="cloud-feature">Implementação de WAF (Cloud/On-Prem)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metricas">
+  <div class="section-inner">
+    <div class="section-label">Impacto Real</div>
+    <h2>Nossos Números</h2>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-num">95%</div>
+        <div class="metric-label">Redução de incidentes de Segurança</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">+4MM</div>
+        <div class="metric-label">Alertas de violação/mês</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">+2000</div>
+        <div class="metric-label">Logs de segurança/dia</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">+300</div>
+        <div class="metric-label">Playbooks de automação/IA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="section-inner">
+    <div class="section-label">Fale Conosco</div>
+    <h2>Diagnóstico de Segurança sem custo</h2>
+    
+    <div class="contact-grid">
+      <div>
+        <p class="section-desc">Descubra como blindar sua operação. Fale com a Mavima para entender qual solução se encaixa na sua necessidade.</p>
+        <div class="contact-channels">
+          <a href="https://wa.me/5511962782152" target="_blank" class="contact-channel">
+            <div class="channel-icon whatsapp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+            <div class="channel-text">
+              <strong>WhatsApp / Fone</strong>
+              <span>(11) 96278-2152</span>
+            </div>
+          </a>
+          <a href="mailto:comercial@mavima.com.br" class="contact-channel">
+            <div class="channel-icon email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+            <div class="channel-text">
+              <strong>E-mail</strong>
+              <span>comercial@mavima.com.br</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome Completo</label>
+              <input type="text" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label>Empresa</label>
+              <input type="text" placeholder="Sua empresa" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mail Corporativo</label>
+            <input type="email" placeholder="nome@empresa.com.br" required>
+          </div>
+          <div class="form-group">
+            <label>Mensagem</label>
+            <textarea placeholder="Como podemos ajudar?" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Solicitar Contato</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="nav-logo-fallback">MAVIMA</span>
+        <div class="footer-dots"><span></span><span></span><span></span></div>
+        <p>Transformando Segurança Digital em Inteligência Estratégica.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#torre1">Segurança as a Service</a></li>
+          <li><a href="#torre2">Automação & IA</a></li>
+          <li><a href="#torre3">Cloud Governance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#metricas">Resultados</a></li>
+          <li><a href="#contato">Fale Conosco</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Mavima. Todos os direitos reservados.</p>
+      <a href="https://www.mavima.com.br" target="_blank">www.mavima.com.br</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5511962782152" target="_blank" class="wa-float">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</a>
+
+</body>
+</html>
