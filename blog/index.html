@@ -4,11 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Mavima Cibersegurança</title>
-<meta name="description" content="Artigos, alertas e boas práticas em cibersegurança para empresas. Conteúdo especializado pela equipe Mavima.">
+<meta name="description" content="Artigos técnicos, alertas de ameaças e boas práticas em cibersegurança. Conteúdo especializado pela equipe Mavima.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#FF9100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
+  /* ── Mesmas variáveis do index.html principal ── */
   :root {
     --bg:       #09090b;
     --bg2:      #0f0f12;
@@ -23,21 +30,41 @@
     --purple:        #73009C;
     --purple-light:  #9b30cc;
     --purple-dim:    rgba(115,0,156,0.15);
+    --purple-glow:   rgba(115,0,156,0.3);
+    --cyan:          #00C9D4;
+    --cyan-dim:      rgba(0,201,212,0.12);
     --text:  #f0eee8;
     --text2: #9c9a8e;
     --text3: #5e5c55;
-    /* Variáveis de fonte atualizadas */
+    --success: #22c58b;
+    /* Mesmas fontes do index.html */
     --font-display: 'Space Grotesk', sans-serif;
     --font-body:    'Inter', sans-serif;
     --radius:    10px;
     --radius-lg: 16px;
     --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
 
-  /* NAV */
+  /* ── Grain — igual ao index.html ── */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: .5;
+  }
+
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,145,0,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,145,0,0.025) 1px, transparent 1px);
+    background-size: 56px 56px; pointer-events: none;
+  }
+
+  /* ── NAV — idêntica ao index.html ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     padding: 0 40px; height: 68px;
@@ -48,109 +75,117 @@
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .nav-logo img { height: 28px; width: auto; }
   .nav-logo-fallback { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.5px; }
+
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+
   .nav-back {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 14px; font-weight: 500; color: var(--text2);
+    font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text2);
     text-decoration: none; transition: color var(--transition);
   }
   .nav-back:hover { color: var(--text); }
   .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* HEADER */
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: #000;
+    font-family: var(--font-body); font-weight: 700; font-size: 13px;
+    padding: 8px 18px; border-radius: 6px;
+    text-decoration: none; transition: opacity var(--transition);
+  }
+  .nav-cta:hover { opacity: .85; }
+  .nav-cta svg { width: 14px; height: 14px; fill: #000; flex-shrink: 0; }
+
+  /* ── HEADER DO BLOG ── */
   .blog-header {
     position: relative; overflow: hidden;
     padding: 72px 40px 56px;
     border-bottom: 1px solid var(--border);
   }
   .blog-header::before {
-    content: '';
-    position: absolute; top: -120px; right: -120px;
+    content: ''; position: absolute; top: -120px; right: -120px;
     width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(255,145,0,0.07) 0%, transparent 65%);
     pointer-events: none;
   }
   .blog-header::after {
-    content: '';
-    position: absolute; bottom: -60px; left: -60px;
+    content: ''; position: absolute; bottom: -60px; left: -60px;
     width: 300px; height: 300px;
     background: radial-gradient(circle, rgba(115,0,156,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
-  .grid-bg {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,145,0,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,145,0,0.02) 1px, transparent 1px);
-    background-size: 56px 56px; pointer-events: none;
-  }
   .header-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+
+  /* section-label idêntico ao index */
   .section-label {
+    font-family: var(--font-body);
     font-size: 11px; font-weight: 600; color: var(--orange);
     text-transform: uppercase; letter-spacing: .12em; margin-bottom: 12px;
   }
   .blog-header h1 {
     font-family: var(--font-display);
-    font-size: clamp(32px, 5vw, 52px);
+    font-size: clamp(32px,5vw,52px);
     font-weight: 800; line-height: 1.08; letter-spacing: -1.5px;
     color: var(--text); margin-bottom: 14px;
   }
   .blog-header h1 em { font-style: normal; color: var(--orange); }
   .blog-header p {
+    font-family: var(--font-body);
     font-size: 17px; color: var(--text2); font-weight: 300;
     max-width: 480px; line-height: 1.75;
   }
 
-  /* FILTROS */
+  /* ── FILTROS ── */
   .filters-bar {
-    padding: 24px 40px;
+    padding: 20px 40px;
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   }
-  .filters-bar span { font-size: 12px; color: var(--text3); margin-right: 4px; }
+  .filters-bar span {
+    font-family: var(--font-body);
+    font-size: 12px; color: var(--text3); margin-right: 4px;
+  }
   .filter-btn {
-    padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 12px; font-weight: 600;
     border: 1px solid var(--border2); background: transparent; color: var(--text2);
-    cursor: pointer; transition: all var(--transition); font-family: var(--font-body);
+    cursor: pointer; transition: all var(--transition);
     text-transform: uppercase; letter-spacing: .04em;
   }
   .filter-btn:hover { border-color: rgba(255,145,0,.3); color: var(--orange); }
   .filter-btn.active { background: var(--orange-dim); border-color: rgba(255,145,0,.35); color: var(--orange); }
 
-  /* GRID PRINCIPAL */
+  /* ── MAIN ── */
   main { max-width: 1100px; margin: 0 auto; padding: 48px 40px 96px; }
 
-  /* Estado de loading */
+  /* Loading */
   .loading-state {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 80px 20px; gap: 16px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 80px 20px; gap: 16px;
   }
   .loading-spinner {
     width: 36px; height: 36px; border-radius: 50%;
-    border: 2px solid var(--border2);
-    border-top-color: var(--orange);
+    border: 2px solid var(--border2); border-top-color: var(--orange);
     animation: spin 0.8s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-state p { font-size: 14px; color: var(--text3); }
+  .loading-state p { font-family: var(--font-body); font-size: 14px; color: var(--text3); }
 
-  /* Estado vazio */
+  /* Empty */
   .empty-state {
     display: none; flex-direction: column; align-items: center;
     padding: 80px 20px; text-align: center; gap: 14px;
   }
   .empty-state svg { width: 48px; height: 48px; stroke: var(--text3); fill: none; stroke-width: 1.2; stroke-linecap: round; }
   .empty-state h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text2); }
-  .empty-state p { font-size: 14px; color: var(--text3); max-width: 320px; line-height: 1.7; }
+  .empty-state p { font-family: var(--font-body); font-size: 14px; color: var(--text3); max-width: 320px; line-height: 1.7; }
 
-  /* POSTS GRID */
-  .posts-grid {
-    display: none;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-  }
+  /* ── POSTS GRID ── */
+  .posts-grid { display: none; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 20px; }
   .posts-grid.visible { display: grid; }
 
-  /* POST CARD */
+  /* ── POST CARD — idêntico ao index.html ── */
   .post-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius-lg); overflow: hidden;
@@ -161,6 +196,7 @@
     border-color: rgba(255,145,0,.22); transform: translateY(-3px);
     box-shadow: 0 20px 56px rgba(0,0,0,.45);
   }
+
   .post-thumb {
     height: 168px; background: var(--bg3);
     display: flex; align-items: center; justify-content: center;
@@ -175,13 +211,12 @@
     width: 34px; height: 34px; stroke: rgba(255,145,0,.28);
     fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
   }
-  /* purple dot — assinatura visual Mavima */
+  /* dot roxo — assinatura visual Mavima */
   .post-thumb::after {
     content: ''; position: absolute; bottom: 14px; right: 14px;
     width: 7px; height: 7px; background: var(--purple); border-radius: 50%;
     box-shadow: 0 0 8px rgba(115,0,156,.5);
   }
-  /* número do post no canto superior esquerdo */
   .post-num {
     position: absolute; top: 14px; left: 14px;
     font-family: var(--font-display); font-size: 11px; font-weight: 700;
@@ -191,51 +226,59 @@
   .post-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
   .post-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .post-tag {
+    font-family: var(--font-body);
     font-size: 11px; font-weight: 600; color: var(--orange);
     background: var(--orange-dim); padding: 3px 10px;
     border-radius: 20px; text-transform: uppercase; letter-spacing: .05em;
   }
-  .post-date { font-size: 12px; color: var(--text3); }
+  .post-date { font-family: var(--font-body); font-size: 12px; color: var(--text3); }
   .post-title {
     font-family: var(--font-display); font-size: 16px; font-weight: 700;
     color: var(--text); line-height: 1.4; margin-bottom: 10px;
     transition: color var(--transition);
   }
   .post-card:hover .post-title { color: var(--orange); }
-  .post-excerpt { font-size: 13.5px; color: var(--text2); line-height: 1.65; flex: 1; }
+  .post-excerpt {
+    font-family: var(--font-body);
+    font-size: 13.5px; color: var(--text2); line-height: 1.65; flex: 1;
+  }
   .post-footer {
     display: flex; align-items: center; justify-content: space-between;
-    margin-top: 18px; padding-top: 14px;
-    border-top: 1px solid var(--border);
+    margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
   }
-  .post-author { font-size: 12px; color: var(--text3); }
+  .post-author { font-family: var(--font-body); font-size: 12px; color: var(--text3); }
   .post-read-more {
+    font-family: var(--font-body);
     font-size: 12px; font-weight: 600; color: var(--orange);
     display: flex; align-items: center; gap: 4px; transition: gap var(--transition);
   }
   .post-card:hover .post-read-more { gap: 8px; }
 
-  /* DESTAQUE — primeiro post maior */
-  .post-card.featured {
-    grid-column: 1 / -1;
-    flex-direction: row;
-  }
-  .post-card.featured .post-thumb {
-    width: 380px; height: auto; min-height: 220px; flex-shrink: 0;
-    border-radius: 0;
-  }
+  /* ── CARD DESTAQUE — primeiro post ── */
+  .post-card.featured { grid-column: 1 / -1; flex-direction: row; }
+  .post-card.featured .post-thumb { width: 380px; height: auto; min-height: 220px; flex-shrink: 0; border-radius: 0; }
   .post-card.featured .post-title { font-size: 20px; }
   .post-card.featured .post-excerpt { font-size: 14.5px; }
 
-  /* FOOTER */
+  /* ── FOOTER DO BLOG — mesma linguagem do index ── */
   .blog-footer {
     border-top: 1px solid var(--border);
-    padding: 40px;
+    padding: 36px 40px;
     display: flex; align-items: center; justify-content: space-between;
     gap: 20px; flex-wrap: wrap;
     max-width: 1100px; margin: 0 auto;
   }
-  .blog-footer p { font-size: 13px; color: var(--text3); }
+  .blog-footer-left { display: flex; align-items: center; gap: 10px; }
+  .blog-footer-left::before {
+    content: ''; width: 7px; height: 7px; background: var(--orange);
+    border-radius: 50%; box-shadow: 0 0 6px var(--orange); flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+  .blog-footer-left p {
+    font-family: var(--font-body); font-size: 13px; color: var(--text3);
+  }
+
   .wa-cta {
     display: inline-flex; align-items: center; gap: 8px;
     background: #25D366; color: #000;
@@ -246,7 +289,7 @@
   .wa-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,211,102,.35); }
   .wa-cta svg { width: 18px; height: 18px; fill: #000; flex-shrink: 0; }
 
-  /* WHATSAPP FLOAT */
+  /* ── WA FLOAT ── */
   .wa-float {
     position: fixed; bottom: 26px; right: 26px; z-index: 200;
     width: 54px; height: 54px; background: #25D366; border-radius: 50%;
@@ -259,23 +302,26 @@
   .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.5); }
   .wa-float svg { width: 26px; height: 26px; fill: white; }
 
-  /* RESPONSIVE */
+  /* ── RESPONSIVE ── */
   @media(max-width:900px){
-    nav, .filters-bar { padding: 0 20px; }
+    nav { padding: 0 20px; }
     .filters-bar { padding: 16px 20px; }
     .blog-header { padding: 56px 20px 40px; }
     main { padding: 36px 20px 72px; }
-    .blog-footer { padding: 32px 20px; }
+    .blog-footer { padding: 28px 20px; }
     .post-card.featured { flex-direction: column; grid-column: auto; }
     .post-card.featured .post-thumb { width: 100%; height: 168px; }
+    .nav-cta { display: none; }
   }
   @media(max-width:540px){
     .posts-grid { grid-template-columns: 1fr; }
+    .blog-footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV — mesma estrutura do index.html -->
 <nav>
   <a href="/" class="nav-logo">
     <img
@@ -285,12 +331,19 @@
     >
     <span class="nav-logo-fallback" style="display:none">MAVIMA</span>
   </a>
-  <a href="/" class="nav-back">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    Voltar ao site
-  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Voltar ao site
+    </a>
+    <a href="https://wa.me/5511962782152?text=Olá!%20Li%20o%20blog%20da%20Mavima%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="nav-cta">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      Falar com Especialista
+    </a>
+  </div>
 </nav>
 
+<!-- HEADER -->
 <div class="blog-header">
   <div class="grid-bg"></div>
   <div class="header-inner">
@@ -300,84 +353,115 @@
   </div>
 </div>
 
+<!-- FILTROS (exibido via JS quando há categorias suficientes) -->
 <div class="filters-bar" id="filters-bar" style="display:none">
   <span>Filtrar:</span>
-  <button class="filter-btn active" data-cat="all" onclick="filtrar(this, 'all')">Todos</button>
+  <button class="filter-btn active" data-cat="all" onclick="filtrar(this,'all')">Todos</button>
 </div>
 
+<!-- LOADING -->
 <div class="loading-state" id="loading">
   <div class="loading-spinner"></div>
   <p>Carregando artigos...</p>
 </div>
 
+<!-- EMPTY STATE -->
 <div class="empty-state" id="empty">
   <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
   <h3>Nenhum artigo ainda</h3>
   <p>Os posts gerados automaticamente aparecerão aqui assim que o workflow n8n publicar o primeiro artigo.</p>
 </div>
 
+<!-- GRID DE POSTS -->
 <main>
   <div class="posts-grid" id="posts-grid"></div>
 </main>
 
+<!-- FOOTER DO BLOG -->
 <div class="blog-footer">
-  <p>Novos artigos publicados automaticamente toda semana pela equipe Mavima + IA.</p>
+  <div class="blog-footer-left">
+    <p>Novos artigos publicados automaticamente toda semana pela equipe Mavima + IA.</p>
+  </div>
   <a href="https://wa.me/5511962782152?text=Olá!%20Li%20o%20blog%20da%20Mavima%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="wa-cta">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
     Falar com especialista
   </a>
 </div>
 
+<!-- WA FLOAT -->
 <a href="https://wa.me/5511962782152?text=Olá!%20Vim%20pelo%20blog%20da%20Mavima.%20Pode%20me%20ajudar?" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
 </a>
 
 <script>
+  /* ── Ícones por categoria — mesmos do index.html ── */
   const ICONES = {
-    'Phishing':            '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
-    'Ransomware':          '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>',
-    'ISO 27001':           '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-    'Arquitetura':         '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
-    'Cloud':               '<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>',
-    'Identidade':          '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>',
-    'Pentest':             '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
-    'LGPD':                '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>',
-    'Threat Intelligence': '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
-    'default':             '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>'
+    'Phishing':               '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
+    'Ransomware':             '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>',
+    'ISO 27001':              '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+    'Arquitetura':            '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+    'Cloud':                  '<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>',
+    'Identidade':             '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>',
+    'Pentest':                '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+    'LGPD':                   '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+    'Threat Intelligence':    '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+    'Inteligência Artificial': '<circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>',
+    'default':                '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>'
   };
+
+  /* Posts fallback — exibidos se posts.json não carregar ainda */
+  const POSTS_FALLBACK = [
+    {
+      slug: 'post-1',
+      titulo: 'Segurança na Utilização de IA nas Empresas: Riscos, Agentes e as Principais Soluções',
+      resumo: 'ChatGPT, Copilot, Gemini, agentes autônomos — o que você precisa saber sobre os riscos reais antes que seja tarde.',
+      categoria: 'Inteligência Artificial',
+      data: 'Abr 2025',
+      autor: 'Equipe Mavima'
+    },
+    {
+      slug: 'phishing-ia-generativa-2025',
+      titulo: 'As Novas Táticas de Phishing que Estão Enganando até Profissionais de TI',
+      resumo: 'Ataques de spear phishing evoluíram com IA generativa. Veja como identificar e bloquear essas ameaças antes que causem dano.',
+      categoria: 'Phishing',
+      data: 'Mar 2025',
+      autor: 'Equipe Mavima'
+    },
+    {
+      slug: 'iso-27001-2022-guia-completo',
+      titulo: 'Guia Completo: o que Muda na ISO 27001:2022 e o que sua Empresa Precisa Fazer',
+      resumo: 'As principais atualizações da nova versão da norma e o impacto para empresas em processo de certificação.',
+      categoria: 'ISO 27001',
+      data: 'Jan 2025',
+      autor: 'Equipe Mavima'
+    }
+  ];
 
   let todosOsPosts = [];
   let categorias = new Set();
 
-  // ── Carrega posts.json com path absoluto (corrige o bug da tela em branco) ──
+  /* ── Carrega posts.json com path absoluto ── */
   async function carregarPosts() {
     try {
-      // Usa path absoluto partindo da raiz do site — funciona em qualquer subpasta
       const r = await fetch('/_data/posts.json');
-      if (!r.ok) throw new Error('posts.json não encontrado');
+      if (!r.ok) throw new Error('não encontrado');
       const data = await r.json();
-      return data.posts || [];
-    } catch(e) {
-      // Fallback: tenta path relativo (para localhost/dev)
+      return (data.posts && data.posts.length) ? data.posts : POSTS_FALLBACK;
+    } catch {
       try {
         const r2 = await fetch('../_data/posts.json');
-        if (!r2.ok) throw new Error('fallback também falhou');
+        if (!r2.ok) throw new Error('fallback falhou');
         const data = await r2.json();
-        return data.posts || [];
-      } catch(e2) {
-        return [];
+        return (data.posts && data.posts.length) ? data.posts : POSTS_FALLBACK;
+      } catch {
+        return POSTS_FALLBACK;
       }
     }
   }
 
-  function icone(categoria) {
-    return ICONES[categoria] || ICONES['default'];
-  }
-
   function criarCard(post, index) {
     const featured = index === 0;
-    const icSvg = `<svg viewBox="0 0 24 24">${icone(post.categoria)}</svg>`;
-
+    const icSvg = `<svg viewBox="0 0 24 24">${ICONES[post.categoria] || ICONES['default']}</svg>`;
     return `
       <a class="post-card${featured ? ' featured' : ''}" href="${post.slug}.html">
         <div class="post-thumb">
@@ -427,7 +511,7 @@
     });
   }
 
-  // ── Init ──
+  /* ── Init ── */
   (async () => {
     const posts = await carregarPosts();
     document.getElementById('loading').style.display = 'none';
@@ -439,7 +523,6 @@
 
     todosOsPosts = posts;
     posts.forEach(p => { if (p.categoria) categorias.add(p.categoria); });
-
     construirFiltros();
     renderizar(posts);
   })();
